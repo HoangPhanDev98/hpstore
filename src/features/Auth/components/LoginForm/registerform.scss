@@ -1,0 +1,15 @@
+.register-form {
+    &__avatar {
+        margin: 32px auto 16px;
+        background-color: rgb(255, 0, 43) !important;
+    }
+
+    &__title {
+        text-align: center;
+        padding-bottom: 24px;
+    }
+
+    &__submit {
+        margin: 20px 0 !important;
+    }
+}

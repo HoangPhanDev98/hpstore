@@ -1,0 +1,15 @@
+.header {
+
+    &__icon {
+        padding-right: 16px;
+    }
+
+    &__logo {
+        flex-grow: 1;
+    }
+
+    &__link {
+        text-decoration: none !important;
+        color: white !important;
+    }
+}
