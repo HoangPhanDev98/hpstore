@@ -8,12 +8,25 @@ Product.propTypes = {
 };
 
 function Product({ product }) {
+  const thumbnailUrl = product.thumbnail
+    ? `https://api.ezfrontend.com${product.thumbnail?.url}`
+    : "https://via.placeholder.com/444";
+
   return (
     <Box padding={1}>
-      <Skeleton variant="rect" width="100%" height={118} />
+      <Box padding={1} minHeight={215}>
+        <img src={thumbnailUrl} width="100%" />
+      </Box>
       <Typography variant="body2">{product.name}</Typography>
       <Typography variant="body2">
-        {product.salePrice} - {product.promotionPercent}
+        <Box component="span" fontSize="16px" fontWeight="bold">
+          {new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          }).format(product.salePrice)}
+        </Box>
+
+        {product.promotionPercent > 0 ? ` -${product.promotionPercent}%` : ""}
       </Typography>
     </Box>
   );
