@@ -65,8 +65,8 @@ export default function Header() {
                 HP Store
               </Link>
             </Typography>
-            <NavLink to="todos" className="header__link">
-              <Button color="inherit">Todos</Button>
+            <NavLink to="products" className="header__link">
+              <Button color="inherit">Product</Button>
             </NavLink>
             <NavLink to="albums" className="header__link">
               <Button color="inherit">Albums</Button>
