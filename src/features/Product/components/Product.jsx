@@ -3,18 +3,27 @@ import PropTypes from "prop-types";
 import { Skeleton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from "../../../constants/index";
+import { useNavigate } from "react-router-dom";
 
 Product.propTypes = {
   product: PropTypes.object,
 };
 
 function Product({ product }) {
+  const navigate = useNavigate();
   const thumbnailUrl = product.thumbnail
     ? `${STATIC_HOST}${product.thumbnail?.url}`
     : THUMBNAIL_PLACEHOLDER;
 
+  const handleClick = () => {
+    navigate(`/products/${product.id}`);
+  };
   return (
-    <Box padding={1}>
+    <Box
+      padding={1}
+      onClick={handleClick}
+      sx={{ ":hover": { cursor: "pointer" } }}
+    >
       <Box padding={1} minHeight={215}>
         <img src={thumbnailUrl} width="100%" />
       </Box>

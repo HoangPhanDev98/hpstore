@@ -1,12 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "@mui/system";
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 import ProductThumbnail from "../components/ProductThumbnail";
+import { useParams } from "react-router-dom";
+import useProductDetail from "../hooks/useProductDetails";
+import ProductInfo from "../components/ProductInfo";
 
 DetailPage.propTypes = {};
 
 function DetailPage(props) {
+  const { productId } = useParams();
+
+  const { product, loading } = useProductDetail(productId);
+
+  if (loading) {
+    return (
+      <Box>
+        <Typography>Loading</Typography>
+      </Box>
+    );
+  }
+
   return (
     <Box>
       <Container>
@@ -22,7 +37,7 @@ function DetailPage(props) {
                 },
               ]}
             >
-              <ProductThumbnail product={{}} />
+              <ProductThumbnail product={{ product }} />
             </Grid>
             <Grid
               item
@@ -33,7 +48,7 @@ function DetailPage(props) {
                 },
               ]}
             >
-              Right column
+              <ProductInfo product={product} />
             </Grid>
           </Grid>
         </Paper>

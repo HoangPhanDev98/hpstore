@@ -8,9 +8,11 @@ ProductThumbnail.propTypes = {
 };
 
 function ProductThumbnail({ product }) {
-  const thumbnailUrl = product.thumbnail
-    ? `${STATIC_HOST}${product.thumbnail?.url}`
+  const thumbnailUrl = product.product.thumbnail
+    ? `${STATIC_HOST}${product.product.thumbnail?.url}`
     : THUMBNAIL_PLACEHOLDER;
+
+  console.log(product.product.thumbnail.url);
 
   return (
     <Box>
