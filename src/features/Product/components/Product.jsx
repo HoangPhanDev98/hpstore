@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Skeleton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from "../../../constants/index";
 
 Product.propTypes = {
   product: PropTypes.object,
@@ -9,8 +10,8 @@ Product.propTypes = {
 
 function Product({ product }) {
   const thumbnailUrl = product.thumbnail
-    ? `https://api.ezfrontend.com${product.thumbnail?.url}`
-    : "https://via.placeholder.com/444";
+    ? `${STATIC_HOST}${product.thumbnail?.url}`
+    : THUMBNAIL_PLACEHOLDER;
 
   return (
     <Box padding={1}>
