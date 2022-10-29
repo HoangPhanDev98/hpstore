@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { Skeleton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { Grid, Skeleton, Typography } from "@mui/material";
+import PropTypes from "prop-types";
+import React from "react";
 
 ProductSkeletonFilters.propTypes = {
   length: PropTypes.number,

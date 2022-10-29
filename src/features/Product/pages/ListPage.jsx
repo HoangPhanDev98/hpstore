@@ -1,13 +1,5 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Pagination,
-  Paper,
-  Tab,
-  Tabs,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Pagination, Paper } from "@mui/material";
+import queryString from "query-string";
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import productApi from "../../../api/productApi";
@@ -16,7 +8,6 @@ import ProductFilters from "../components/ProductFilters";
 import ProductList from "../components/ProductList";
 import ProductSkeletonList from "../components/ProductSkeletonList";
 import ProductSort from "../components/ProductSort";
-import queryString from "query-string";
 
 ListPage.propTypes = {};
 

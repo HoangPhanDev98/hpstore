@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import NotFound from "./components/NotFound";
-import HomeFeature from "./features/Home";
 import Header from "./components/Header";
+import NotFound from "./components/NotFound";
+import CartFeature from "./features/Cart";
+import HomeFeature from "./features/Home";
 import ProductFeature from "./features/Product";
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<HomeFeature />} />
-        <Route path="/products/*" element={<ProductFeature />} />
-
+        <Route path="" element={<HomeFeature />} />
+        <Route path="products/*" element={<ProductFeature />}></Route>
+        <Route path="cart" element={<CartFeature />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

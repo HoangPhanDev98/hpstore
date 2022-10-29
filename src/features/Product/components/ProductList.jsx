@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import { Grid, Pagination } from "@mui/material";
+import PropTypes from "prop-types";
+import React from "react";
 import Product from "./Product";
 
 ProductList.propTypes = {

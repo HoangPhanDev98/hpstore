@@ -1,21 +1,25 @@
-import { AccountCircle, Close } from "@mui/icons-material";
+import {
+  AccountCircle,
+  Close,
+  MailLockOutlined,
+  ShoppingCart,
+} from "@mui/icons-material";
 import CodeIcon from "@mui/icons-material/Code";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { Badge, IconButton, Menu, MenuItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Login from "../../features/Auth/components/Login";
 import Register from "../../features/Auth/components/Register";
 import { logout } from "../../features/Auth/userSlice";
+import { cartItemsCountSelector } from "../../features/Cart/selectors";
 import "./header.scss";
 
 const MODE = {
@@ -25,7 +29,9 @@ const MODE = {
 
 export default function Header() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state.user.current);
+  const cartItemsCount = useSelector(cartItemsCountSelector);
   const isLoggedIn = !!loggedInUser.id;
 
   const [open, setOpen] = React.useState(false);
@@ -52,6 +58,10 @@ export default function Header() {
     const action = logout();
     dispatch(action);
     setAnchorEl(null);
+  };
+
+  const handleCartClick = () => {
+    navigate("/cart");
   };
 
   return (
@@ -82,6 +92,12 @@ export default function Header() {
                 <AccountCircle />
               </IconButton>
             )}
+
+            <IconButton color="inherit" onClick={handleCartClick}>
+              <Badge badgeContent={cartItemsCount} color="primary">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
           </Toolbar>
         </AppBar>
 

@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Skeleton, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from "../../../constants/index";
+import PropTypes from "prop-types";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from "../../../constants/index";
+import { formatPrice } from "../../../utils";
 
 Product.propTypes = {
   product: PropTypes.object,
@@ -25,15 +26,12 @@ function Product({ product }) {
       sx={{ ":hover": { cursor: "pointer" } }}
     >
       <Box padding={1} minHeight={215}>
-        <img src={thumbnailUrl} width="100%" />
+        <img src={thumbnailUrl} alt={product.name} width="100%" />
       </Box>
       <Typography variant="body2">{product.name}</Typography>
       <Typography variant="body2">
         <Box component="span" fontSize="16px" fontWeight="bold">
-          {new Intl.NumberFormat("vi-VN", {
-            style: "currency",
-            currency: "VND",
-          }).format(product.salePrice)}
+          {formatPrice(product.salePrice)}
         </Box>
 
         {product.promotionPercent > 0 ? ` -${product.promotionPercent}%` : ""}

@@ -12,11 +12,9 @@ function ProductThumbnail({ product }) {
     ? `${STATIC_HOST}${product.product.thumbnail?.url}`
     : THUMBNAIL_PLACEHOLDER;
 
-  console.log(product.product.thumbnail.url);
-
   return (
     <Box>
-      <img src={thumbnailUrl} width="100%" />
+      <img src={thumbnailUrl} alt={product.name} width="100%" />
     </Box>
   );
 }
